@@ -36,11 +36,8 @@ dados_tratados <- tbl_brutos |>
   tidyr::drop_na() |>
   dplyr::as_tibble() 
 
-  # Criar banco de dados SQL
-sql_tratados <- DBI::dbConnect(
-    drv = duckdb::duckdb(),
-    dbdir = "dados/dados_tratados.db"
-)
+# Criar banco de dados SQL
+sql_tratados <- conectar_sql(local = "dados/dados_tratados.db")
 
 # Armazenar dados em tabela no banco SQL
 DBI::dbWriteTable(
